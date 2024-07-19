@@ -1,6 +1,10 @@
 import express from 'express'
 import cors from 'cors'
+
 import usersRouter from './routes/users-router'
+import salesRepository from './repositories/sales-repositories'
+import salesRouter from './routes/sales-router'
+
 
 // Porta do servidor
 const PORT = process.env.PORT || 4000
@@ -10,6 +14,8 @@ const HOSTNAME = process.env.HOSTNAME || 'http://localhost'
 
 // App Express
 const app = express()
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Cors para porta padrão do reactjs
 app.use(cors({
@@ -21,6 +27,7 @@ app.use(cors({
 // Rotas
 app.use('/api', usersRouter)
 
+app.use('/api', salesRouter)
 
 
 // Endpoint raiz

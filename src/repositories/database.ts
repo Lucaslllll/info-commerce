@@ -24,12 +24,13 @@ const database = new sqlite3.Database(DBSOURCE, (err) => {
         console.error(err.message)
         throw err
     } else {
-        console.log('Base de dados conectada com sucesso.')
+        console.log('Database connected successful.')
         database.run(SQL_ITENS_CREATE, (err) => {
             if (err) {
+                console.log('Tables already created')
                 // Possivelmente a tabela já foi criada
             } else {
-                console.log('Tabela itens criada com sucesso.')
+                console.log('Tabela User e Sales criada com sucesso. Tables user and sale')
             }
         })
     }
